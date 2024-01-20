@@ -19,4 +19,5 @@ def cipher(s):
 
 
 print(cipher('Apple'))
+# 複合も同じ関数でいける
 print(cipher(cipher('Apple')))
