@@ -11,3 +11,5 @@ for i in f:
     ii = i.split('\t')
     col1.write(ii[0] + '\n')
     col2.write(ii[1] + '\n')
+
+# これもpandas使うといいっぽいんだけど、pandasはpandas100本ノックで勉強したい。
