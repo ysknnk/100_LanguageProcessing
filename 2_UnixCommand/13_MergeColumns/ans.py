@@ -4,13 +4,15 @@
 確認にはpasteコマンドを用いよ．
 """
 
-col1 = list(open('2_UnixCommand/13_MergeColumns/col1.txt', 'r'))
-col2 = list(open('2_UnixCommand/13_MergeColumns/col2.txt', 'r'))
-merged_file = open('2_UnixCommand/13_MergeColumns/merged_file.txt', 'w')
+with open('2_UnixCommand/13_MergeColumns/col1.txt', 'r') as col1:
+    with open('2_UnixCommand/13_MergeColumns/col2.txt', 'r') as col2:
+        with open('2_UnixCommand/13_MergeColumns/merged_file.txt', 'w') as merged_file:
 
-for i in range(len(col1)):
-    merged_file.write(col1[i].replace('\n', '') + '\t' +
-                      col2[i].replace('\n', '') + '\n')
+            col1_lines = col1.read().splitlines()
+            col2_lines = col2.read().splitlines()
+            for i in range(len(col1_lines)):
+                merged_file.write(col1_lines[i].replace('\n', '') + '\t' +
+                                  col2_lines[i].replace('\n', '') + '\n')
 
 
 """

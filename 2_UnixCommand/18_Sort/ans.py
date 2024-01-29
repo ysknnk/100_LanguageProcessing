@@ -5,12 +5,12 @@
 """
 import pprint
 
-f = open('2_UnixCommand/17_DiffLetters/popular-names.txt', 'r')
-tmp_l = []
+with open('2_UnixCommand/18_Sort/popular-names.txt', 'r') as f:
+    tmp_l = []
 
-for i in f:
-    tmp_l.append(i.split('\t'))
-pprint.pprint(sorted(tmp_l, key=lambda x: int(x[2])))
+    for i in f:
+        tmp_l.append(i.split('\t'))
+    pprint.pprint(sorted(tmp_l, key=lambda x: int(x[2])))
 
 
 # 二次元配列のソートについて検索してしまいました。申し訳ございません。検索結果がほとんど答えでした。

@@ -8,14 +8,15 @@ import sys
 # コマンドライン引数を取得
 row_count = int(sys.argv[1])
 
-f = list(open('2_UnixCommand/14_PrintNRows/popular-names.txt', 'r'))
-
-for i in range(row_count):
-    print(f[i].replace('\n', ''))
+with open('2_UnixCommand/14_PrintNRows/popular-names.txt', 'r') as f:
+    f_lines = f.read().splitlines()
+    for i in range(row_count):
+        print(f_lines[i].replace('\n', ''))
 
 
 """
-nnkysk@KITA-9:/mnt/c/Users/nnkg4/pythonProjects/100_LanguageProcessing$ python3 2_UnixCommand/14_PrintNRows/ans.py 12
+# python
+python3 2_UnixCommand/14_PrintNRows/ans.py 12
 Mary    F       7065    1880
 Anna    F       2604    1880
 Emma    F       2003    1880
@@ -29,7 +30,8 @@ Sarah   F       1288    1880
 John    M       9655    1880
 William M       9532    1880
 
-nnkysk@KITA-9:/mnt/c/Users/nnkg4/pythonProjects/100_LanguageProcessing$ head -12 2_UnixCommand/14_PrintNRows/popular-names.txt 
+# linuxコマンド
+head -12 2_UnixCommand/14_PrintNRows/popular-names.txt
 Mary    F       7065    1880
 Anna    F       2604    1880
 Emma    F       2003    1880

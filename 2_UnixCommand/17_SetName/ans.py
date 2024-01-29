@@ -3,13 +3,13 @@
 1列目の文字列の種類（異なる文字列の集合）を求めよ．確認にはcut, sort, uniqコマンドを用いよ．
 """
 
-f = open('2_UnixCommand/17_SetName/popular-names.txt', 'r')
-tmp_l = []
+with open('2_UnixCommand/17_SetName/popular-names.txt', 'r') as f:
+    tmp_l = []
 
-for i in f:
-    tmp_l.append(i.split('\t')[0])
+    for i in f:
+        tmp_l.append(i.split('\t')[0])
 
-print(sorted(set(tmp_l)))
+    print(sorted(set(tmp_l)))
 
 """
 # python

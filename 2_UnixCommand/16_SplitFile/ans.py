@@ -8,25 +8,27 @@ import sys
 # コマンドライン引数を取得
 split_num = int(sys.argv[1])
 
-f = list(open('2_UnixCommand/16_SplitFile/popular-names.txt', 'r'))
-count = 0
+with open('2_UnixCommand/16_SplitFile/popular-names.txt', 'r') as f:
+    f_lines = f.read().splitlines()
+    count = 0
 
-# 入力値が0以下だと無限にファイルを作り続けるので、抜ける
-if split_num <= 0:
-    exit()
+    # 入力値が0以下だと無限にファイルを作り続けるので、抜ける
+    if split_num <= 0:
+        exit()
 
-# 0行以上残っている間だけループ
-while len(f) > 0:
-    # 入力された行数以上残っている場合
-    output_file = open(f'2_UnixCommand/16_SplitFile/{count}.txt', 'w')
-    if len(f) >= split_num:
-        output_file.write(''.join(f[:split_num]))
-        del f[:split_num]
-        count += 1
-    # 入力された行数分残っていない場合
-    else:
-        output_file.write(''.join(f))
-        f.clear()
+    # 0行以上残っている間だけループ
+    while len(f_lines) > 0:
+        # 入力された行数以上残っている場合
+        with open(f'2_UnixCommand/16_SplitFile/{count}.txt', 'w') as output_file:
+            if len(f_lines) >= split_num:
+                output_file.write(
+                    '\n'.join(f_lines[:split_num]) + '\n')
+                del f_lines[:split_num]
+                count += 1
+            # 入力された行数分残っていない場合
+            else:
+                output_file.write('\n'.join(f_lines) + '\n')
+                f_lines.clear()
 
 
 """
