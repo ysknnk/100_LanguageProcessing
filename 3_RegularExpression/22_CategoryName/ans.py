@@ -7,7 +7,7 @@ import pandas as pd
 import re
 
 df = pd.read_json(
-    '3_RegularExpression/21_categories/jawiki-country.json.gz', lines=True)
+    '3_RegularExpression/22_CategoryName/jawiki-country.json.gz', lines=True)
 
 uk = df.query('title=="イギリス"')['text'].values[0]
 
