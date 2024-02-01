@@ -14,11 +14,17 @@ uk = df.query('title=="イギリス"')['text'].values[0]
 ans = []
 
 for i in uk.split('\n'):
-    if '[[Category:' in i:
-        # 例えば'[[Category:イギリス|*]]'において
-        # '\[\[\w+:' → '[[Category:'
-        # '(.[^\| | ^\]]*)' → 'イギリス'(というか'[[Category:')に続く'|'と']'以外の文字列
-        # 最初'(\w+)'にしたんだけど'1801年に成立した国家・領域'の中黒でも切られちゃうからやめた
-        pattern = '\[\[\w+:(.[^\| | ^\]]*)'
-        print(re.search(pattern, i).group(1))
-        ans.append(re.search(pattern, i))
+    # 最初
+    # if '[[Category:' in i:
+    # でCategoryの行かどうか判定してたんだけど、よく考えたらいらないことがわかったので修正
+
+    # 例えば'[[Category:イギリス|*]]'において
+    # '\[\[Category:' → '[[Category:'
+    # '(.[^\| | ^\]]*)' → 'イギリス'(というか'[[Category:')に続く'|'と']'以外の文字列
+    # 最初'(\w+)'にしたんだけど'1801年に成立した国家・領域'の中黒でも切られちゃうからやめた
+    pattern = '\[\[Category:(.[^\| | ^\]]*)'
+    category_name = re.search(pattern, i)
+    if category_name:
+        ans.append(category_name.group(1))
+
+print(ans)
