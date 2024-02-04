@@ -4,7 +4,9 @@
 """
 
 import pandas as pd
+import pprint
 import re
+
 
 df = pd.read_json(
     '3_RegularExpression/25_Template/jawiki-country.json.gz', lines=True)
@@ -16,9 +18,7 @@ ans = {}
 for index, i in enumerate(uk.split('\n')):
     pattern = '^\|(.*)\s=\s*(.*)'
     template = re.search(pattern, i)
-    if '略名' in i:
-        print(i)
     if template:
         ans[template.group(1)] = template.group(2)
 
-print(ans)
+pprint.pprint(ans)
