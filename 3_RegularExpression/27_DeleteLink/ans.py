@@ -8,7 +8,7 @@ import pprint
 import re
 
 df = pd.read_json(
-    '3_RegularExpression/26_DeleteEmphasis/jawiki-country.json.gz', lines=True)
+    '3_RegularExpression/27_DeleteLink/jawiki-country.json.gz', lines=True)
 
 uk = df.query('title=="イギリス"')['text'].values[0]
 
