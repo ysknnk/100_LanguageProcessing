@@ -11,7 +11,8 @@ neko_map_l = []
 
 # 違う名詞に当たるまで再帰呼び出し
 def is_same_noun(l, index, noun, count=0):
-    if l[index + 1]['surface'] == noun:
+    if l[index + 1]['pos'] == '名詞' and\
+            l[index + 1]['surface'] == noun:
         count += 1
     else:
         return count
@@ -37,16 +38,16 @@ with open('4_MorphologicalAnalysis/neko.txt.mecab', 'r') as neko:
 # [{'base': '知る', 'pos': '動詞', 'pos1': '*', 'surface': '知ら'}, ...]
 continuous_noun_dict = {}
 for index, neko_map_ in enumerate(neko_map_l):
-    noun = neko_map_['surface']
     if neko_map_['pos'] == '名詞':
+        noun = neko_map_['surface']
         count = is_same_noun(neko_map_l, index, noun)
 
-    # 連続して出現する名詞かつ
-    # 新規or既存のものより長く連続しているものをdictに追加or更新
-    # {'名詞': 出現回数}のdict
-    if count != 0:
-        if noun not in continuous_noun_dict or \
-                continuous_noun_dict[noun] < count:
-            continuous_noun_dict[noun] = count + 1
+        # 連続して出現する名詞かつ
+        # 新規or既存のものより長く連続しているものをdictに追加or更新
+        # {'名詞': 出現回数}のdict
+        if count != 0:
+            if noun not in continuous_noun_dict or \
+                    continuous_noun_dict[noun] < count:
+                continuous_noun_dict[noun] = count + 1
 
 print([x * y for x, y in continuous_noun_dict.items()])
