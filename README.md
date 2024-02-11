@@ -10,3 +10,5 @@ IT業界から離れて半年、いつかまた戻る時のためにお勉強が
 
 - [[Git] git-secretsでパスワードや機密情報の登録を禁止する](https://blog.katsubemakito.net/git/git-secrets#Linux)<br><br>
 2024年1月16日～
+
+- 3章→4章→5章で難易度上がりすぎではないですか？
